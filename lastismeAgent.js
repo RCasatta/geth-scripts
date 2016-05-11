@@ -8,11 +8,11 @@ var player1=eth.accounts[0];
 var player2=eth.accounts[1];
 console.log("player1=" + player1 + " player2=" + player2);
 
-
 var remaining12h=contract12h.remaining().toNumber();
 var totalBlocks12h=contract12h.blocks().toNumber();
 var lastPlayer12h=contract12h.lastPlayer();
-console.log("12h lottery remaining blocks " + remaining12h + " of " + totalBlocks12h+ " lastPlayer " + lastPlayer12h );
+var price12h=contract12h.price().toNumber();
+console.log("12h lottery remaining blocks " + remaining12h + " of " + totalBlocks12h+ " lastPlayer=" + lastPlayer12h + " price12h=" + price12h);
 console.log("psw=" + psw);
 if(remaining12h<25) {
   console.log("betting!");
@@ -20,14 +20,14 @@ if(remaining12h<25) {
     console.log("player1 playing");
     var unlocked= personal.unlockAccount(player1, psw);
     console.log("player1 unlocked=" + unlocked);
-    var val=eth.sendTransaction({from: player1, to: lottery12h , value: web3.fromWei(0.5,"ether") , gas:200000, gasPrice:20000000000 });
+    var val=eth.sendTransaction({from: player1, to: lottery12h , value: price12h , gas:200000, gasPrice:20000000000 });
     console.log("player1 payed=" + val);
 
   } else {
     console.log("player2 playing");
     var unlocked= personal.unlockAccount(player2, psw);
     console.log("player2 unlocked=" + unlocked);
-    var val=eth.sendTransaction({from: player2, to: lottery12h , value: web3.fromWei(0.5,"ether") , gas:200000, gasPrice:20000000000 });
+    var val=eth.sendTransaction({from: player2, to: lottery12h , value: price12h , gas:200000, gasPrice:20000000000 });
     console.log("player2 payed=" + val);
 
   }

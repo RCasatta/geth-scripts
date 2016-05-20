@@ -39,5 +39,5 @@ if(remaining6h10f<10 || (remaining6h10f<20 && Math.random()<0.1) || (remaining6h
   }
 
 } else {
-  console.log("not betting. remaining= " + remaining30m);
+  console.log("not betting. remaining= " + remaining6h10f);
 }

@@ -39,5 +39,5 @@ if(remaining30m<10 || (remaining30m<20 && Math.random()<0.1) || (remaining30m<30
   }
 
 } else {
-  console.log("not betting. remaining= " + remaining);
+  console.log("not betting. remaining= " + remaining30m);
 }
